@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./login_styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Login Page</h2>
+
+            <form action="#">
+                <div class="form-group">
+                    <label for="email">Enter Email</label><br>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Enter Password</label>
+                    <input type="text" id="password" name="password">
+                </div>
+                <div class="form-group"  id="submit-button" >
+                    <button type="submit" onclick="getData()">Submit</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</body>
+
+<script>
+    function getData(){
+        event.preventDefault();
+        
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        var user_records = JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[];
+
+        if(user_records.some((v)=>{
+            return v.email===email && v.password===password
+        })){
+            alert("Login successfull");
+            var current_user = user_records.filter((v)=>{
+                return v.email===email && v.password===password
+            })[0]
+
+            localStorage.setItem("name",current_user.name);
+            localStorage.setItem("email",current_user.email);
+            window.location.href = "profile.html";
+        }
+        else
+        {
+            alert("Login Failed")
+        }
+
+        
+    }
+</script>
+
+</html>

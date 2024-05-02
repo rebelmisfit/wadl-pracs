@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(247, 250, 250);
+}
+.container{
+    background-color: rgb(213, 231, 247);
+    align-items: center;
+    margin-top: 10%;
+    width: 320px;
+    height: 240px;
+    border-color: black;
+    border-radius: 5%;
+}
+
+#submit-button{
+    margin-left: 40%;
+}
+
+#email{
+    width: 95%;
+}
+
+#password{
+    width: 95%;
+}
